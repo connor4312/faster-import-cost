@@ -1,0 +1,112 @@
+{
+  "name": "faster-import-cost",
+  "displayName": "Faster Import Cost",
+  "description": "Fast import code display for Javascript code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "faster-import-cost.installEsbuild",
+        "title": "Re/install bundler"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Faster Import Cost",
+      "properties": {
+        "fasterImportCost.bundleSizeColoring": {
+          "type": "string",
+          "default": "minified",
+          "enum": [
+            "minified",
+            "compressed"
+          ],
+          "description": "Which bundle size to use for selecting the color"
+        },
+        "fasterImportCost.smallPackageSize": {
+          "type": "number",
+          "default": 50,
+          "description": "Upper size limit, in KB, that will count a package as a small package"
+        },
+        "fasterImportCost.mediumPackageSize": {
+          "type": "number",
+          "default": 100,
+          "description": "Upper size limit, in KB, that will count a package as a medium package"
+        },
+        "fasterImportCost.smallPackageDarkColor": {
+          "type": "string",
+          "default": "#7cc36e",
+          "description": "Decoration color for small packages in dark theme"
+        },
+        "fasterImportCost.mediumPackageDarkColor": {
+          "type": "string",
+          "default": "#7cc36e",
+          "description": "Decoration color for medium packages in dark theme"
+        },
+        "fasterImportCost.largePackageDarkColor": {
+          "type": "string",
+          "default": "#d44e40",
+          "description": "Decoration color for large packages in dark theme"
+        },
+        "fasterImportCost.smallPackageLightColor": {
+          "type": "string",
+          "default": "#7cc36e",
+          "description": "Decoration color for small packages in light theme"
+        },
+        "fasterImportCost.mediumPackageLightColor": {
+          "type": "string",
+          "default": "#7cc36e",
+          "description": "Decoration color for medium packages in light theme"
+        },
+        "fasterImportCost.largePackageLightColor": {
+          "type": "string",
+          "default": "#d44e40",
+          "description": "Decoration color for large packages in light theme"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "node .esbuild.js --minify",
+    "compile": "node .esbuild.js",
+    "watch": "node .esbuild.js --watch",
+    "pretest": "npm run lint",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/estraverse": "^5.1.2",
+    "@types/estree": "^1.0.0",
+    "@types/node": "^18.11.17",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "acorn": "^8.8.1",
+    "esbuild": "^0.16.9",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.3",
+    "vitest": "^0.26.0"
+  },
+  "dependencies": {
+    "acorn-loose": "^8.3.0",
+    "enhanced-resolve": "^5.12.0",
+    "estraverse": "^5.3.0",
+    "piscina": "^3.2.0"
+  },
+  "prettier": {
+    "printWidth": 100
+  }
+}

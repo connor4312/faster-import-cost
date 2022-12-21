@@ -1,0 +1,79 @@
+// Vitest Snapshot v1
+
+exports[`extract > extracts default type 1`] = `
+[
+  {
+    "members": "default",
+    "name": "bar",
+    "range": SourceLocation {
+      "end": Position {
+        "column": 22,
+        "line": 1,
+      },
+      "start": Position {
+        "column": 0,
+        "line": 1,
+      },
+    },
+  },
+]
+`;
+
+exports[`extract > extracts inline import 1`] = `
+[
+  {
+    "members": "all",
+    "name": "bar",
+    "range": SourceLocation {
+      "end": Position {
+        "column": 31,
+        "line": 1,
+      },
+      "start": Position {
+        "column": 18,
+        "line": 1,
+      },
+    },
+  },
+]
+`;
+
+exports[`extract > extracts namespace 1`] = `
+[
+  {
+    "members": "all",
+    "name": "bar",
+    "range": SourceLocation {
+      "end": Position {
+        "column": 28,
+        "line": 1,
+      },
+      "start": Position {
+        "column": 0,
+        "line": 1,
+      },
+    },
+  },
+]
+`;
+
+exports[`extract > extracts simple js 1`] = `
+[
+  {
+    "members": [
+      "foo",
+    ],
+    "name": "bar",
+    "range": SourceLocation {
+      "end": Position {
+        "column": 26,
+        "line": 1,
+      },
+      "start": Position {
+        "column": 0,
+        "line": 1,
+      },
+    },
+  },
+]
+`;
